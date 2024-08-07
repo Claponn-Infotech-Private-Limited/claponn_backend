@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors(
   {
-    origin : "https://claponn.netlify.app/",
+    origin : "https://claponn1.netlify.app/",
     methods: ['GET', 'POST'],
   }
 ));
