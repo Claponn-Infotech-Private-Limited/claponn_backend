@@ -8,12 +8,19 @@ const dotenv = require("dotenv")
 
 const app = express();
 
-app.use(cors(
-  {
-    origin : "https://localhost:5173/",
-    methods: ['GET', 'POST'],
+
+const allowedOrigins = ['http://localhost:5173'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Check if the origin is in the allowedOrigins array or is undefined (for non-browser requests)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
   }
-));
+}));
 app.use(bodyParser.json());
 dotenv.config();
 app.use("/api/form", formRoutes);
