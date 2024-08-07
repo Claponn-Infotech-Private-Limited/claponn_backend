@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors(
   {
-    origin : "https://localhost:5173/contactus",
+    origin : "https://localhost:5173/",
     methods: ['GET', 'POST'],
   }
 ));
